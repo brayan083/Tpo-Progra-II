@@ -180,7 +180,6 @@ public class ArbolPrecipitaciones implements ABBPrecipitacionesTDA {
 		return v1.compareToIgnoreCase(v2) > 0;
 	}
 	
-	// Los siguientes métodos los dejaremos para cuando hagamos los algoritmos de consulta.
 	@Override
 	public ColaStringTDA periodos() { return null; }
 

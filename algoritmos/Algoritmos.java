@@ -1,12 +1,11 @@
 package algoritmos;
 
-import implementacion.ArbolPrecipitaciones; // 
+import implementacion.ArbolPrecipitaciones;
 import implementacion.ColaPrioridad;
-import implementacion.ColaString; // 
-import tdas.ABBPrecipitacionesTDA; // 
-import tdas.ColaPrioridadTDA; // 
+import implementacion.ColaString;
+import tdas.ABBPrecipitacionesTDA;
+import tdas.ColaPrioridadTDA;
 import tdas.ColaStringTDA;
-// import tdas.ColaStringTDA;
 import tdas.ConjuntoStringTDA;
 import tdas.ConjuntoTDA;
 import tdas.DiccionarioSimpleStringTDA;
@@ -27,7 +26,6 @@ public class Algoritmos {
 
 	/**
 	 * Valida si una fecha es correcta, incluyendo años bisiestos.
-	 * Requerido por el enunciado del TPO.
 	 */
 	private boolean esFechaValida(int anio, int mes, int dia) {
 		if (anio <= 0 || mes < 1 || mes > 12 || dia < 1 || dia > 31) {
@@ -55,7 +53,7 @@ public class Algoritmos {
 	 */
 	public void agregarMedicion(String campo, int anio, int mes, int dia, int precipitacion) { //
 		if (esFechaValida(anio, mes, dia)) {
-			// Convertimos los enteros a String como sugiere el enunciado
+			// Convertimos los enteros a String
 			String anioStr = String.valueOf(anio);
 			String mesStr = String.valueOf(mes);
 			arbolPrecipitaciones.agregarMedicion(campo, anioStr, mesStr, dia, precipitacion);
@@ -87,8 +85,7 @@ public class Algoritmos {
 
 	/**
 	 * Devuelve una cola con prioridad con las precipitaciones de cada dia de un mes
-	 * y año
-	 * determinado en un campo determinado
+	 * y año determinado en un campo determinado
 	 */
 	public ColaPrioridadTDA medicionesCampoMes(String campo, int anio, int mes) {
 		// 1. Creamos la cola de prioridad que vamos a devolver.
@@ -251,8 +248,7 @@ public class Algoritmos {
 		// 2. Procesamos el nodo actual (la raíz del árbol/subárbol).
 		int lluviaNodoActual = 0;
 		// Buscamos el diccionario de mediciones del campo actual.
-		// ArbolPrecipitaciones arbolImpl = (ArbolPrecipitaciones) arbol; // Necesitamos
-		// acceso a los métodos de nuestra
+		// Necesitamos acceso a los métodos de nuestra
 		DiccionarioSimpleStringTDA medicionesCampo = ((ArbolPrecipitaciones) arbol)
 				.buscarNodo(arbol.raiz()).mensualPrecipitaciones;
 
@@ -394,8 +390,7 @@ public class Algoritmos {
 
 	/**
 	 * Devuelve los campos con una cantidad de lluvia en un periodo determinado que
-	 * es mayor al
-	 * promedio de lluvia en un periodo determinado
+	 * es mayor al promedio de lluvia en un periodo determinado
 	 */
 	public ColaString camposConLLuviaMayorPromedio(int anio, int mes) {
 		// ----- FASE 1: CALCULAR EL PROMEDIO -----
@@ -431,8 +426,7 @@ public class Algoritmos {
 
 	/**
 	 * AYUDANTE 1 (recursivo)
-	 * Recorre el árbol para calcular la suma total y el conteo de campos para un
-	 * periodo.
+	 * Recorre el árbol para calcular la suma total y el conteo de campos para un periodo.
 	 */
 	private void calcularTotalesPeriodo(ABBPrecipitacionesTDA arbol, String periodo, int[] acumulador) {
 		if (arbol.arbolVacio()) {
@@ -454,8 +448,7 @@ public class Algoritmos {
 
 	/**
 	 * AYUDANTE 2 (recursivo)
-	 * Recorre el árbol, y si la lluvia de un campo en un periodo supera el
-	 * promedio, lo acola.
+	 * Recorre el árbol, y si la lluvia de un campo en un periodo supera el promedio, lo acola.
 	 */
 	private void encontrarCamposSobrePromedio(ABBPrecipitacionesTDA arbol, String periodo, float promedio,
 			ColaStringTDA cola) {
@@ -479,8 +472,7 @@ public class Algoritmos {
 	/**
 	 * AYUDANTE 3 (NO recursivo)
 	 * Calcula el total de lluvia para un campo específico (el nodo raíz del árbol
-	 * que recibe)
-	 * en un periodo específico.
+	 * que recibe) en un periodo específico.
 	 */
 	private int calcularLluviaDeCampoEnPeriodo(ABBPrecipitacionesTDA arbol, String periodo) {
 		int sumaCampo = 0;

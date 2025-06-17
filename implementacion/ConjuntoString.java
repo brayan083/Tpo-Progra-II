@@ -61,8 +61,14 @@ public class ConjuntoString implements ConjuntoStringTDA {
 
 	@Override
 	public String elegir() {
-		// Devolvemos el primer elemento, es la forma más simple.
-		return primero.valor;
+		r = new Random();
+		int pos = r.nextInt(cantidad);
+		Nodo actual = primero;
+		while(pos > 0) {
+			actual = actual.siguiente;
+			pos--;
+		}
+		return actual.valor;
 	}
 
 	@Override

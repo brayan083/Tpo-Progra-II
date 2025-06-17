@@ -6,7 +6,7 @@ import tdas.DiccionarioSimpleTDA;
 
 public class DiccionarioSimpleString implements DiccionarioSimpleStringTDA {
 
-	class Nodo { // El enunciado pide respetar la forma del nodo
+	class Nodo {
 		String periodo;
 		DiccionarioSimpleTDA precipitacionesMes;
 		Nodo siguiente;
@@ -36,7 +36,6 @@ public class DiccionarioSimpleString implements DiccionarioSimpleStringTDA {
 		Nodo nodo = this.nodoConClave(periodo);
 		
 		if (nodo == null) {
-			// El periodo no existe, hay que crearlo.
 			// 1. Creamos el diccionario de precipitaciones para este periodo.
 			DiccionarioSimpleTDA nuevoDiccionarioPrecipitaciones = new DiccionarioSimple();
 			nuevoDiccionarioPrecipitaciones.inicializar();
@@ -57,13 +56,16 @@ public class DiccionarioSimpleString implements DiccionarioSimpleStringTDA {
 	@Override
 	public void eliminar(String periodo) {
 		if (primero != null) {
+			// Si el primer nodo es el que hay que eliminar
 			if (primero.periodo.equals(periodo)) {
 				primero = primero.siguiente;
 			} else {
+				// Busca el nodo anterior al que se debe eliminar
 				Nodo actual = primero;
 				while (actual.siguiente != null && !actual.siguiente.periodo.equals(periodo)) {
 					actual = actual.siguiente;
 				}
+				// Si encontró el nodo a eliminar, ajusta los enlaces para excluirlo de la lista
 				if (actual.siguiente != null) {
 					actual.siguiente = actual.siguiente.siguiente;
 				}
